@@ -1,0 +1,32 @@
+# MainProgram.py
+# author: David
+# date: 04/12/2018
+
+from UserCommand import UserCommand
+from Board import Board
+from Guess import Guess
+
+guess = Guess()
+def play_board(board,player_number):
+    play_times = 0
+    while(play_times<2):
+        print("player",player_number,"Please place your", play_times + 1,"ship")
+        play = UserCommand()
+        play.place_ship(board)
+        play_times += 1
+
+def play_game():
+    player_number = 1
+    while player_number <3:
+        if player_number == 1:
+            player1_board = Board()
+            play_board(player1_board,player_number)
+
+            guess.player_guess(player_number,player1_board)
+        else:
+            player2_board = Board()
+            play_board(player2_board,player_number)
+            guess.player_guess(player_number,player2_board)
+        player_number += 1
+
+play_game()
